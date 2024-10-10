@@ -9,13 +9,7 @@ const Token = process.env.BOT_TOKEN;
 
 const bot = new Telegrambot(Token , {polling:true});
 
-bot.on('message', (msg) => {
-    const text = msg.text;
 
-    console.log("Message received: ", text);
-
-    bot.sendMessage(msg.chat.id, "You said: " + text);
-})
 
 bot.onText(/\/joke/ , async function (msg){
     const joke = await axios.get('https://official-joke-api.appspot.com/random_joke');
@@ -24,6 +18,9 @@ bot.onText(/\/joke/ , async function (msg){
     console.log(joke)
 
     bot.sendMessage(msg.chat.id , setup);
-    bot.sendMessage(msg.chat.id, '/n');
     bot.sendMessage(msg.chat.id, punchline);
+})
+
+bot.onText(/\/images/ , async function (msg){
+    bot.sendMessage(msg.chat.id , "Images function started");
 })
