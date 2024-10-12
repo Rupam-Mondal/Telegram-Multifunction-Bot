@@ -2,6 +2,7 @@ const Telegrambot = require('node-telegram-bot-api')
 const axios = require('axios')
 const dotenv = require('dotenv');
 const { Imagefetcher } = require('./services/Imagefetch');
+const { GetHororscope } = require('./services/Horoscope');
 
 dotenv.config();
 
@@ -25,4 +26,10 @@ bot.onText(/\/images\/(.+)/ , async function (msg , match){
     const userInput = match[1];
     const response = await Imagefetcher(userInput);
     bot.sendMessage(msg.chat.id , response);
+})
+
+bot.onText(/\/horoscope\/(.+)/, async function (msg, match) {
+    const userInput = match[1];
+    const response = await GetHororscope(userInput);
+    bot.sendMessage(msg.chat.id, response.horoscope);
 })

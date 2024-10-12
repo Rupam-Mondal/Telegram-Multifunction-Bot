@@ -5,6 +5,7 @@ A fun and interactive Telegram bot that responds with random jokes and image lin
 ## 🌟 Features
 - **/joke**: Fetches a random joke and sends it to the user.
 - **/images/(anyobject)**: Fetches a random image of the object specified after `/images/` from Unsplash and sends the image URL.
+- **/horoscope/(sign)** : It gives your daily horoscope details
 
 ---
 
